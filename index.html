@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF to Markdown Converter</title>
+  <script>
+    async function handleFileUpload() {
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+      
+      if (!file) {
+        alert("No file selected.");
+        return;
+      }
+      
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      try {
+        const response = await fetch('http://localhost:3001/api/convertPdfToMd', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.status !== 200) {
+          alert(`Failed to upload: ${response.statusText}`);
+          return;
+        }
+
+        const result = await response.json();
+        document.getElementById('output').textContent = result.markdown;
+      } catch (err) {
+        alert(`An error occurred: ${err}`);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>PDF to Markdown Converter</h1>
+  
+  <input type="file" id="file" />
+  <button onclick="handleFileUpload()">Upload and Convert</button>
+  
+  <h2>Converted Markdown:</h2>
+  <pre id="output"></pre>
+</body>
+</html>

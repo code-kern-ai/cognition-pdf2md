@@ -1,71 +1,15 @@
 {
-  "name": "combined-app",
-  "version": "0.1.0",
-  "private": true,
-  "description": "A PDF to Markdown Converter integrated into a Next.js app",
-  "main": "lib/pdf2md.js",
-  "bin": {
-    "pdf2md": "lib/pdf2md-cli.js"
-  },
-  "files": [
-    "/lib",
-    "/test"
-  ],
+  "name": "pdf-to-md-api",
+  "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint lib --cache && next lint",
-    "test": "mocha test --recursive",
-    "test:watch": "mocha test --recursive --watch",
-    "test:coverage": "nyc npm run test",
-    "check": "npm run lint && npm run test:coverage"
-  },
-  "keywords": [
-    "PDF",
-    "Markdown",
-    "Converter",
-    "Next.js"
-  ],
-  "author": "Open Government Products, Government Technology Agency of Singapore (https://open.gov.sg)",
-  "contributors": [
-    "Johannes Zillmann"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/your-repository/combined-app"
+    "start": "node server.js"
   },
   "dependencies": {
     "@opendocsg/pdf2md": "^0.1.27",
-    "enumify": "^1.0.4",
-    "eslint": "8.49.0",
-    "eslint-config-next": "13.4.19",
-    "fs": "^0.0.1-security",
-    "minimist": "^1.2.5",
-    "multer": "^1.4.5-lts.1",
-    "next": "13.4.19",
-    "next-connect": "^1.0.0",
-    "pdfjs-dist": "^2.9.359",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@opengovsg/eslint-config-opengovsg": "^1.0.6",
-    "babel-eslint": "^10.0.2",
-    "chai": "^4.2.0",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-flowtype": "^3.11.1",
-    "eslint-plugin-flowtype-comment": "^1.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jasmine": "^2.2.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "flow-bin": "^0.102.0",
-    "mocha": "^10.2.0",
-    "mock-fs": "^4.10.1",
-    "nyc": "^15.1.0",
-    "rewire": "^5.0.0"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "swagger-ui-express": "^4.1.6"
   }
 }
