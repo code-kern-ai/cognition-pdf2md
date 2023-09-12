@@ -1,51 +1,38 @@
-# pdf2md
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-JavaScript npm library to parse PDF files and convert them into Markdown
+## Getting Started
 
-## Major Changes
+First, run the development server:
 
-See [Releases](https://github.com/opendocsg/pdf2md/releases)
-
-## Usage
-
-### Library
-
-```js
-const fs = require('fs')
-const pdf2md = require('@opendocsg/pdf2md')
-
-const pdfBuffer = fs.readFileSync(filePath)
-pdf2md(pdfBuffer, callbacks)
-  .then(text => {
-    let outputFile = allOutputPaths[i] + '.md'
-    console.log(`Writing to ${outputFile}...`)
-    fs.writeFileSync(path.resolve(outputFile), text)
-    console.log('Done.')
-  })
-  .catch(err => {
-    console.error(err)
-  })
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-### CLI tool
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-$ cd [project_folder]
-$ npx @opendocsg/pdf2md --inputFolderPath=[your input folder path] --outputFolderPath=[your output folder path] --recursive
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-If you are converting recursively on a large number of files you might encounter the error "Allocation failed - JavaScript heap out of memory”. Instead, run the command
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-```
-$ node lib/pdf2md-cli.js --max-old-space-size=4096 --inputFolderPath=[your input folder path] --outputFolderPath=[your output folder path] --recursive
-```
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Options:
-1. Input folder path (should exist)
-2. Output folder path (should exist)
-3. Recursive - convert all PDFs for folders within folders. Specify the tag if you require recursive, and omit if you don't
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Credits
+## Learn More
 
-[pdf-to-markdown](https://github.com/jzillmann/pdf-to-markdown) - original project by Johannes Zillmann  
-[pdf.js](https://mozilla.github.io/pdf.js/) - Mozilla's PDF parsing & rendering platform which is used as a raw parser
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

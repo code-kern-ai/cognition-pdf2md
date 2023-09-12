@@ -1,7 +1,8 @@
 {
-  "name": "@opendocsg/pdf2md",
-  "version": "0.1.27",
-  "description": "A PDF to Markdown Converter",
+  "name": "combined-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A PDF to Markdown Converter integrated into a Next.js app",
   "main": "lib/pdf2md.js",
   "bin": {
     "pdf2md": "lib/pdf2md-cli.js"
@@ -11,7 +12,10 @@
     "/test"
   ],
   "scripts": {
-    "lint": "eslint lib --cache",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint lib --cache && next lint",
     "test": "mocha test --recursive",
     "test:watch": "mocha test --recursive --watch",
     "test:coverage": "nyc npm run test",
@@ -20,7 +24,8 @@
   "keywords": [
     "PDF",
     "Markdown",
-    "Converter"
+    "Converter",
+    "Next.js"
   ],
   "author": "Open Government Products, Government Technology Agency of Singapore (https://open.gov.sg)",
   "contributors": [
@@ -29,18 +34,26 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/opendocsg/pdf2md"
+    "url": "https://github.com/your-repository/combined-app"
   },
   "dependencies": {
+    "@opendocsg/pdf2md": "^0.1.27",
     "enumify": "^1.0.4",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.4.19",
+    "fs": "^0.0.1-security",
     "minimist": "^1.2.5",
-    "pdfjs-dist": "^2.9.359"
+    "multer": "^1.4.5-lts.1",
+    "next": "13.4.19",
+    "next-connect": "^1.0.0",
+    "pdfjs-dist": "^2.9.359",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@opengovsg/eslint-config-opengovsg": "^1.0.6",
     "babel-eslint": "^10.0.2",
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-flowtype": "^3.11.1",
     "eslint-plugin-flowtype-comment": "^1.0.0",
@@ -50,7 +63,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.102.0",
-    "mocha": "^8.2.1",
+    "mocha": "^10.2.0",
     "mock-fs": "^4.10.1",
     "nyc": "^15.1.0",
     "rewire": "^5.0.0"
