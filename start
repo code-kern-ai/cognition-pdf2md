@@ -1,26 +1,15 @@
 #!/bin/bash
+trap "echo -ne '\nstopping container...' && docker stop cognition-pdf2md > /dev/null 2>&1 && echo -ne '\t\t [done]\n'" EXIT
 
-# Trap to gracefully stop the Docker container when the script exits
-trap "echo -ne '\nStopping container...' && docker stop pdf2md > /dev/null 2>&1 && echo -ne '\t\t [done]\n'" EXIT
+docker stop cognition-pdf2md
 
-# Stop the old container if it exists
-echo -ne 'Stopping old container...'
-docker stop pdf2md > /dev/null 2>&1
-echo -ne '\t [done]\n'
+docker build -t cognition-pdf2md-dev -f dev.Dockerfile .
 
-# Build the Docker image
-echo -ne 'Building container...'
-docker build -t pdf2md-dev .
-echo -ne '\t\t [done]\n'
+docker run --rm -d \
+--name cognition-pdf2md \
+-p 7097:3000 \
+--mount type=bind,source="$(pwd)"/,target=/app \
+--network dev-setup_default \
+cognition-pdf2md-dev
 
-# Run the Docker container
-echo -ne 'Starting...'
-docker run -d --rm \
-  --name pdf2md \
-  -p 3001:3001 \
-  -v $(pwd):/usr/src/app \
-  pdf2md-dev
-echo -ne '\t\t\t [done]\n'
-
-# Tail the logs of the running container
-docker logs -f pdf2md
+docker logs -f cognition-pdf2md
