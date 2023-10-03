@@ -7,7 +7,7 @@ docker build -t cognition-pdf2md-dev -f dev.Dockerfile .
 
 docker run --rm -d \
 --name cognition-pdf2md \
--p 7097:3000 \
+-p 7097:80 \
 --mount type=bind,source="$(pwd)"/,target=/app \
 --network dev-setup_default \
 cognition-pdf2md-dev

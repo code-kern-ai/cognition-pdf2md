@@ -17,7 +17,7 @@
       formData.append('file', file);
       
       try {
-        const response = await fetch('http://localhost:3000/api/convertPdfToMd', {
+        const response = await fetch('http://localhost:80/api/convertPdfToMd', {
           method: 'POST',
           body: formData
         });
