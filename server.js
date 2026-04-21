@@ -11,6 +11,10 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.post('/api/convertPdfToMd', upload.single('file'), async (req, res) => {
   try {
     if (!req.file) {
