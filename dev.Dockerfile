@@ -1,24 +1,22 @@
-# Use the official Node.js image from the Docker Hub
-FROM node:18
+ARG DHI_NODE_BUILD=dhi.io/node:20-debian12-dev
+FROM ${DHI_NODE_BUILD}
 
-# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json files to the working directory
+VOLUME ["/usr/src/app"]
+
+USER root
+
 COPY package*.json ./
 
-# Install npm packages
 RUN npm install
 
-# Copy the source code to the working directory
 COPY . .
 
-# Increase Node.js heap size (e.g. 4GB) to avoid OOM when processing many PDFs
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
+USER 65532:65532
 
-# Expose port 80 to interact with the application
 EXPOSE 80
 
-# Command to run the application
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
