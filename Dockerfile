@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 COPY . .
 
@@ -23,4 +23,4 @@ USER 65532:65532
 
 EXPOSE 80
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
