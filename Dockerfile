@@ -19,7 +19,7 @@ COPY --from=builder --chown=65532:65532 /usr/src/app .
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-USER nonroot
+USER node
 
 EXPOSE 80
 
