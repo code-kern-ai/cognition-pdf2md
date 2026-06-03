@@ -1,5 +1,5 @@
+ARG PARENT_IMAGE=registry.dev.kern.ai/code-kern-ai/refinery-parent-images:hardened-images-next
 ARG DHI_NODE_BUILD=dhi.io/node:20-debian12-dev
-ARG DHI_NODE_RUNTIME=dhi.io/node:20-debian12
 
 FROM ${DHI_NODE_BUILD} AS builder
 
@@ -11,7 +11,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 
 COPY . .
 
-FROM ${DHI_NODE_RUNTIME}
+FROM ${PARENT_IMAGE}
 
 WORKDIR /usr/src/app
 
@@ -19,7 +19,7 @@ COPY --from=builder --chown=65532:65532 /usr/src/app .
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-USER 65532:65532
+USER nonroot
 
 EXPOSE 80
 

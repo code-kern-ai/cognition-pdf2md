@@ -1,5 +1,5 @@
-ARG DHI_NODE_BUILD=dhi.io/node:20-debian12-dev
-FROM ${DHI_NODE_BUILD}
+ARG PARENT_IMAGE=registry.dev.kern.ai/code-kern-ai/refinery-parent-images:dev-next
+FROM ${PARENT_IMAGE}
 
 WORKDIR /usr/src/app
 
