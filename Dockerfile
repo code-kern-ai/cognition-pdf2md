@@ -1,4 +1,4 @@
-ARG PARENT_IMAGE=kernai/refinery-parent-images:v3.0.0-next
+ARG PARENT_IMAGE=kernai/refinery-parent-images:v2.0.0-next
 ARG DHI_NODE_BUILD=dhi.io/node:20-debian12-dev
 
 FROM ${DHI_NODE_BUILD} AS builder
